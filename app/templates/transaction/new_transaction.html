@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Transaction Center{% endblock %}
+{% block head %}
+{{ super() }}
+    <!--     Custom styles for this template -->
+    <link href="{{ url_for('static',filename='new-transaction.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+
+
+{% block page_content %}
+
+    <div class="container">
+        <div class="col-md-12">
+    <!--        左侧图片-->
+            <div class="col-md-6 decorate-photo">
+            </div>
+    <!--        右侧表单-->
+            <div class="col-md-6">
+                <form class="form-transaction form-horizontal" method="post" style="margin: 75px auto 0 auto;" enctype="multipart/form-data">
+                    {{ form.csrf_token }}
+                    <h1 class="form-transaction-heading">Transaction</h1>
+    <!--                商品名-->
+                    <div class="form-group">
+                        {{ form.name.label(for="item_name", class="col-sm-3") }}
+                        <div class="col-sm-8">
+                            {{ form.name(id="item_name", class="form-control") }}
+                        </div>
+                    </div>
+    <!--                商品描述-->
+                    <div class="form-group">
+                        {{ form.describe.label(for="item_describe", class="col-sm-3") }}
+                        <div class="col-sm-8">
+                            {{ form.describe(id="item_describe", class="form-control describe", rows="4") }}
+                        </div>
+                    </div>
+    <!--                商品链接-->
+                    <div class="form-group">
+                        {{ form.link.label(for="link", class="col-sm-3") }}
+                        <div class="col-sm-8">
+                            {{ form.link(id="link", class="form-control") }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.mode.label(for="transaction_mode", class="col-sm-3") }}
+                        <div class="col-sm-8">
+                            {{ form.mode(id="transaction_mode", class="form-control") }}
+                        </div>
+                    </div>
+    <!--                联系方式-->
+                    <div class="form-group">
+                        {{ form.chat.label(for="seller_WeChat", class="col-sm-3") }}
+                        <div class="col-sm-8">
+                            {{ form.chat(id="seller_WeChat", class="form-control") }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.photo.label(for="photo", class="col-sm-3") }}
+                        <div class="col-sm-8">
+                            {{ form.photo(id="photo", class="form-control") }}
+                        </div>
+                    </div>
+
+    <!--                提交表单-->
+                    <div class="col-sm-offset-3 col-sm-7">
+                        {{ form.submit(class="btn btn-success trans-submit", id="submit") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

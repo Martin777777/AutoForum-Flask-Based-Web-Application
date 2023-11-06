@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+
+{% block title %}New Company Activity{% endblock %}
+
+
+{% block head %}
+{{ super() }}
+<!--     Custom styles for this template -->
+<link href="{{ url_for('static',filename='new-activity.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{% block page_content %}
+
+
+<div class="container">
+    <div class="col-md-12">
+
+        <!--        左侧表单-->
+        <div class="col-md-6">
+            <form class="form-activity form-horizontal" method="post" enctype="multipart/form-data">
+                {{ form.csrf_token }}
+                <h1 class="form-activity-heading col-sm-offset-1">Auto Show</h1>
+                <!--                    活动名称-->
+                <div class="form-group">
+                    {{ form.name.label (for="activity_name", class="col-sm-offset-1 col-sm-3") }}
+                    <div class="col-sm-8">
+                        {{ form.name(id="activity_name", type="text", class="form-control")}}
+                    </div>
+                    {% for error in form.name.errors %}
+                    <span style="color:red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <!--                    活动时间-->
+                <div class="form-group">
+                    {{ form.time.label(for="activity_time", class="col-sm-offset-1 col-sm-3") }}
+                    <div class="col-sm-8">
+                        {{ form.time(id="activity_time", type="datetime-local", class="form-control") }}
+                    </div>
+                    {% for error in form.time.errors %}
+                    <span style="color:red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <!--                    活动地点-->
+                <div class="form-group">
+                    {{ form.place.label(for="activity_place", class="col-sm-offset-1 col-sm-3") }}
+                    <div class="col-sm-8">
+                        {{ form.place(id="activity_place", type="text", class="form-control") }}
+                    </div>
+                    {% for error in form.place.errors %}
+                    <span style="color:red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <!--                    活动描述-->
+                <div class="form-group">
+                    {{ form.describe.label(for="activity_describe", class="col-sm-offset-1 col-sm-3") }}
+                    <div class="col-sm-8">
+                        {{form.describe(id="activity_describe", class="form-control describe", rows="3")}}
+                    </div>
+                    {% for error in form.describe.errors %}
+                    <span style="color:red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <!--                    组织者-->
+                <div class="form-group">
+                    {{ form.organizer.label(for="organizer", class="col-sm-offset-1 col-sm-3") }}
+                    <div class="col-sm-8">
+                        {{ form.organizer(id="organizer", type="text", class="form-control") }}
+                    </div>
+                    {% for error in form.organizer.errors %}
+                    <span style="color:red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <!--                    是否获批-->
+                <div class="form-group">
+                    {{ form.photo.label(for="photo", class="col-sm-offset-1 col-sm-3") }}
+                    <div class="col-sm-8">
+                        {{ form.photo(id="photo", class="form-control") }}
+                    </div>
+                    {% for error in form.photo.errors %}
+                    <span style="color:red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <!--                    提交表单-->
+                <div class="col-sm-offset-4 col-sm-7">
+                    {{ form.submit(class="btn btn-success active-submit", id="submit") }}
+                </div>
+            </form>
+        </div>
+
+        <!--        右侧图片-->
+        <div class="col-md-6 decorate-photo">
+        </div>
+    </div>
+</div>
+
+{% endblock %}

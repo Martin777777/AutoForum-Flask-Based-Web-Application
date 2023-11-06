@@ -1,0 +1,43 @@
+{% extends "index_base.html" %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Student Exchange Forum of BJUT{% endblock %}
+
+{% block head %}
+{{ super() }}
+<!--     Custom styles for this template -->
+<link href="{{ url_for('static',filename='home.css') }}" rel="stylesheet">
+<link href="{{ url_for('static',filename='posts.css') }}" rel="stylesheet">
+<link href="{{ url_for('static',filename='interact.css') }}" rel="stylesheet">
+<link href="{{ url_for('static',filename='video.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="../../static/editormd/tests/css/bootstrap-theme.min.css">
+
+{% endblock %}
+
+{% block page %}
+
+<!--        帖子浏览界面        -->
+<div class="col-md-12 content">
+    <div class="tabbable">
+
+        <div class="tab-content">
+
+            <div class="tab-pane active" id="panel-3">
+                <ul class="posts list-unstyled">
+                    {% for activity in activities %}
+                    {% if activity.is_invalid!=true %}
+                    {% include 'company/_activities.html' %}
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% block video %}
+<video id="v1" autoplay loop muted>
+    <source src="{{ url_for('static',filename='video/video3.mp4') }}" type="video/mp4"/>
+</video>
+{% endblock %}
+
+{% endblock %}

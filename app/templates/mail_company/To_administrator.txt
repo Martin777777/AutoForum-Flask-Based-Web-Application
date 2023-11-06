@@ -1,0 +1,12 @@
+Dear administrator,
+There is a student company or club applying for an SOFB official account.</p>
+{The following is their information. You need to contact the school to confirm the authenticity of this information.</p>
+
+Firm Name: {{ company.name }}
+Firm Manager: {{ company.manager }}
+Firm Email: {{ company.email }}
+Contact Way : {{ company.phone }}
+After checking the information, click here
+
+Sincerely,
+Student Exchange Forum of BJUT

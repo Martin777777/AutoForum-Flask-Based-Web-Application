@@ -1,0 +1,881 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Student Exchange Forum of BJUT{% endblock %}
+
+{% block head %}
+{{ super() }}
+<!--     Custom styles for this template -->
+<link rel="stylesheet" href="../../static/editormd/tests/css/bootstrap-theme.min.css">
+<style>
+    #toTop {
+        position: fixed;
+        right: 5px;
+        bottom: 10px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 40px solid rgb(255, 230, 96);
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+    }
+
+    .icon-car {
+        width: 33%;
+        text-align: center;
+    }
+
+    .icon-car:hover {
+        background-color: lightgray;
+    }
+</style>
+
+{% endblock %}
+
+{#主导航#}
+{% block video %}
+{% endblock %}
+
+{% block search %}
+<form class="navbar-form navbar-left" role="search" method="post">
+    <div class="form-group">
+        <input name="search" value=" " style="width: 420px;margin-left: 20px;" type="text"
+               class="form-control" placeholder="Search">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+{% endblock %}
+
+{% block content %}
+
+<div style="position: fixed; left: 15px; top: 80px">
+    <button id="open2"
+            style="margin-left:10px; margin-top: 5px; position: absolute; opacity: 0.6; border-radius: 5px; z-index: 1;left: 0px; width: 30px; height: 30px; border-style: none; background-color: transparent; background-size: 100%; background-image:url('../static/Image/openList-A-black.png')"></button>
+    <div id="list2" style=" display: flex; z-index: 0; flex-direction: column">
+        {# hottest #}
+        <div class="col-sm-12 inner3" style="display: flex; flex-direction: row; flex-wrap: wrap ;padding-top: 35px;" id="find">
+            <h4 style="width: 100%; height: 30px; border-bottom: 2px solid black">Popular Brand</h4>
+            <div class="icon-car" onclick="select('')">
+                <img class="icon-car-inner" width="92%" height="80px" src="../static/Image/icon-car/All.png"/>
+                <p name="all"> All </p>
+            </div>
+            <div class="icon-car" onclick="select('benz')">
+                <img class="icon-car-inner" width="92%" height="80px" src="../static/Image/icon-car/Benz.png"/>
+                <p name="benz"> Benz </p>
+            </div>
+            <div class = "icon-car" onclick="select('bmw')">
+                <img width="92%" height="80px"  src="../static/Image/icon-car/BMW.png"/>
+                <p name="bmw"> BMW </p>
+            </div>
+            <div class = "icon-car" onclick="select('audi')">
+                <img width="92%" height="80px"  src="../static/Image/icon-car/Audi.png"/>
+                <p name="audi"> Audi </p>
+            </div>
+            <div class = "icon-car" onclick="select('ford')">
+                <img width="92%" height="80px"  src="../static/Image/icon-car/Ford.png"/>
+                <p name="ford"> Ford </p>
+            </div>
+            <div class = "icon-car" onclick="select('cadillac')">
+                <img width="92%" height="80px"  src="../static/Image/icon-car/Cadillac.png"/>
+                <p name="cadillac"> Cadillac </p>
+            </div>
+            <div class = "icon-car" onclick="select('honda')">
+                <img width="92%" height="80px"  src="../static/Image/icon-car/Honda.png"/>
+                <p name="Honda"> Honda </p>
+            </div>
+            <div class = "icon-car" onclick="select('mazda')">
+                <img width="92%" height="80px"  src="../static/Image/icon-car/Mazda.png"/>
+                <p name="mazda"> Mazda </p>
+            </div>
+            <div class = "icon-car" onclick="select('porsche')">
+                <img width="92%" height="80px"  src="../static/Image/icon-car/Porsche.png"/>
+                <p name="porsche"> Porsche </p>
+            </div>
+            <div class = "icon-car" onclick="select('toyota')">
+                <img width="92%" height="80px"  src="../static/Image/icon-car/Toyota.png"/>
+                <p name="toyota"> Toyota </p>
+            </div>
+            <div class = "icon-car" onclick="select('volkswagen')">
+                <img width="92%" height="80px"  src="../static/Image/icon-car/Volkswagen.png"/>
+                <p name="volkswagen"> Volkswagen </p>
+            </div>
+            <div class = "icon-car" onclick="select('hyundai')">
+                <img width="92%" height="80px"  src="../static/Image/icon-car/Hyundai.png"/>
+                <p name="hyundai"> Hyundai </p>
+            </div>
+            <div class="icon-car" onclick="select('greatWall')">
+                <img width="92%" height="80px" src="../static/Image/icon-car/GreatWall.png"/>
+                <p name="hyundai"> Porsche </p>
+            </div>
+            <div class="icon-car" onclick="select('other')">
+                <img width="92%" height="80px" src="../static/Image/icon-car/Other.png"/>
+                <p name="hyundai"> Other </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div style="position: fixed; right: 40px; bottom: 100px">
+    <iframe id="wangyiyun" style="position: absolute; right: 0; top: 0" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1404596131&auto=1&height=66"></iframe>
+</div>
+<div style="position: fixed; right: 15px; top: 80px">
+    <button id="open"
+            style="margin-right:10px; margin-top: 5px; position: absolute; opacity: 0.6; border-radius: 5px; z-index: 1; right: 0px; width: 30px; height: 30px; border-style: none; background-color: transparent; background-size: 100%; background-image:url('../static/Image/openList-B-black.png')"></button>
+    <div id="list" style=" display: flex; z-index: 0; flex-direction: column">
+
+        {# 登录用户的个人资料卡及互动功能#}
+        {% if current_user.is_authenticated %}
+
+        {# 个人资料卡#}
+        <div class="thumbnail inner1 col-sm-12" style="padding-top: 35px;">
+            <div class="col-sm-3">
+                {% if current_user.avatar_img %}
+                <img class="img-rounded profile-thumbnail head" src="{{ current_user.avatar_img }}"
+                     alt="avatar"
+                     style="width: 50px; height: 50px">
+                {% else %}
+                <img class="img-rounded profile-thumbnail head"
+                     src="{{ current_user.gravatar(size=50) }}"
+                     alt="avatar">
+                {% endif %}
+            </div>
+
+            <div class=" caption">
+                <a href="{{ url_for('main.user', username=current_user.username) }}">
+                    <h4>{{ current_user.username }}
+                        {% if current_user.can(Permission.ACTIVITY) %}
+                        <svg class="icon" viewBox="0 0 1024 1024" width="20" height="20"
+                             style="margin: 0">
+                            <path d="M959.786667 148.906667l-44.330667-0.725333c-1.024 0-100.437333-2.048-203.050667-41.728-105.301333-40.789333-173.141333-87.552-173.781333-88.021333L511.872 0 485.248 18.474667C484.608 18.901333 416.768 65.706667 311.466667 106.453333 208.938667 146.218667 109.482667 148.181333 108.544 148.181333L64 148.906667l0 430.464C64 795.477333 355.328 1024 511.957333 1024 668.714667 1024 960 795.477333 960 579.370667L959.786667 148.906667zM321.877333 772.48 321.877333 355.413333 282.112 355.413333 282.112 317.482667 441.173333 317.482667l0 189.610667 200.192-189.610667 157.696 0L321.877333 772.48z"
+                                  fill="#3688FF"></path>
+                        </svg>
+                        {% endif %}
+                    </h4>
+                </a>
+                <p class="info"> {{ current_user.about_me }}</p>
+            </div>
+
+            <div class="follow btn-group btn-group-justified" role="group">
+                <a href="{{ url_for('.followers', username=current_user.username) }}"
+                   class="btn left-btn"
+                   role="button">{{ current_user.followers.count() - 1 }} Followers</a>
+                <a href="{{ url_for('.followed_by', username=current_user.username) }}" class="btn"
+                   role="button">{{
+                    current_user.following.count() - 1 }} Following</a>
+            </div>
+
+        </div>
+        {# 发布按钮#}
+        <div class="inner2  col-sm-12">
+            <!--                  发表新帖-->
+            <div class="inner2-left col-sm-3">
+                <div class="new-posts">
+                    <div>
+                        <a href="{{ url_for('.new_post_md')}}">
+                            <svg class="icon" viewBox="0 0 1024 1024" version="1.1" width="40"
+                                 height="40">
+                                <defs>
+                                    <style type="text/css"></style>
+                                </defs>
+                                <path d="M824 921H184c-52.9 0-96-43.1-96-96V185c0-52.9 43.1-96 96-96h640c52.9 0 96 43.1 96 96v640c0 52.9-43.1 96-96 96zM184 153c-17.6 0-32 14.4-32 32v640c0 17.6 14.4 32 32 32h640c17.6 0 32-14.4 32-32V185c0-17.6-14.4-32-32-32H184z"
+                                      fill="#3688FF" p-id="1446"></path>
+                                <path d="M285.9 750.9c-8.4 0-16.5-3.3-22.6-9.4-8.4-8.4-11.5-20.8-7.9-32.2l49.3-157.1c1.5-4.9 4.3-9.4 7.9-13l328.8-328.8c6-6 14.1-9.4 22.6-9.4s16.6 3.4 22.6 9.4l107.8 107.8c12.5 12.5 12.5 32.8 0 45.3L465.6 692.2c-3.6 3.6-8.1 6.4-13 7.9l-157.1 49.3c-3.2 1-6.4 1.5-9.6 1.5z m77.5-172L334.8 670l91.2-28.6 300.6-300.6-62.6-62.5-300.6 300.6z"
+                                      fill="#3688FF" p-id="1447"></path>
+                                <path d="M486.4 640.3c-8.2 0-16.4-3.1-22.6-9.4L374 541.1c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l89.8 89.8c12.5 12.5 12.5 32.8 0 45.3-6.4 6.3-14.5 9.4-22.7 9.4z"
+                                      fill="#3688FF" p-id="1448"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="icon-word">new post</div>
+                </div>
+            </div>
+            {% if current_user.can(Permission.ACTIVITY) %}
+            <!--                  发布活动-->
+            <div class="inner2-right col-sm-3">
+                <div class="new-activity">
+                    <div>
+                        <a href="{{ url_for('company.company_activity')}}">
+                            <svg class="icon" viewBox="0 0 1024 1024" version="1.1" width="40"
+                                 height="40">
+                                <defs>
+                                    <style type="text/css"></style>
+                                </defs>
+                                <path d="M509.952 484.864h4.096c89.088-1.024 160.768-72.192 160.768-159.232V272.384C674.816 184.32 602.112 112.64 512 112.64S349.184 184.32 349.184 272.384v53.248c0 87.552 71.68 158.208 160.768 159.232z m316.416 23.552c57.856 0 104.96-44.544 104.96-99.84v-33.28c0-55.296-47.104-99.84-104.96-99.84s-104.96 44.544-104.96 99.84v33.28c0 54.784 47.104 99.84 104.96 99.84z m-628.736 0c57.856 0 104.96-44.544 104.96-99.84v-33.28c0-55.296-47.104-99.84-104.96-99.84s-104.96 44.544-104.96 99.84v33.28c0.512 54.784 47.104 99.84 104.96 99.84zM46.592 609.792c-27.648 13.824-46.592 45.568-46.592 81.92v40.96c0 27.136 15.872 49.664 37.376 57.344 33.28 8.704 67.584 14.336 102.4 17.92v-72.192c0-64.512 23.552-121.344 58.88-157.184h-1.024c-52.736-0.512-103.936 10.752-151.04 31.232z m930.816 0c-47.104-20.48-97.792-31.744-151.552-31.744h-1.024c35.84 35.84 58.88 92.672 58.88 157.184v72.704c34.816-3.072 69.12-9.216 102.4-17.92 21.504-7.168 37.376-30.208 37.376-57.344v-40.448c0.512-36.864-18.432-68.096-46.08-82.432z m-233.984-4.096c-72.192-33.28-150.016-51.2-231.424-51.2-81.408 0-159.232 17.92-230.912 50.688-41.984 22.016-71.68 72.704-71.68 131.072v65.536c0 43.52 24.064 79.872 56.832 91.648 79.36 21.504 161.28 33.28 245.76 33.28s166.4-11.776 245.248-33.28c32.768-11.776 56.832-48.128 56.832-91.648v-65.536c0.512-57.856-28.672-108.032-70.656-130.56z m0 0"
+                                      p-id="1343" fill="#3688FF"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="icon-word">activity</div>
+                </div>
+            </div>
+            {% else %}
+            <!--                发布二手交易帖子-->
+            <div class="inner2-right col-sm-3">
+                <div class="new-transaction">
+                    <div>
+                        <a href="{{ url_for('transaction.new_transaction')}}">
+                            <svg class="icon" viewBox="0 0 1024 1024" version="1.1" width="40"
+                                 height="40">
+                                <defs>
+                                    <style type="text/css"></style>
+                                </defs>
+                                <path d="M504 953c-60.5 0-119.1-11.8-174.4-35.2-53.4-22.6-101.3-54.9-142.4-96-41.1-41.1-73.4-89-96-142.4C67.8 624.1 56 565.5 56 505s11.8-119.1 35.2-174.4c22.6-53.4 54.9-101.3 96-142.4 41.1-41.1 89-73.4 142.4-96C384.9 68.8 443.5 57 504 57s119.1 11.8 174.4 35.2c53.4 22.6 101.3 54.9 142.4 96 41.1 41.1 73.4 89 96 142.4C940.2 385.9 952 444.5 952 505s-11.8 119.1-35.2 174.4c-22.6 53.4-54.9 101.3-96 142.4-41.1 41.1-89 73.4-142.4 96C623.1 941.2 564.5 953 504 953z m0-832c-211.7 0-384 172.3-384 384s172.3 384 384 384 384-172.3 384-384-172.3-384-384-384z"
+                                      fill="#3688FF" p-id="1448"></path>
+                                <path d="M639.2 467.7H368.8c-17.7 0-32-14.3-32-32s14.3-32 32-32h270.4c17.7 0 32 14.3 32 32s-14.3 32-32 32zM605.4 606.3H402.6c-17.7 0-32-14.3-32-32s14.3-32 32-32h202.8c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
+                                      fill="#3688FF" p-id="1449"></path>
+                                <path d="M504 745c-17.7 0-32-14.3-32-32V435.7c0-17.7 14.3-32 32-32s32 14.3 32 32V713c0 17.7-14.3 32-32 32z"
+                                      fill="#3688FF" p-id="1450"></path>
+                                <path d="M504 451.9c-9.2 0-18.4-4-24.7-11.6L377.9 317.4c-11.2-13.6-9.3-33.8 4.3-45 13.6-11.2 33.8-9.3 45 4.3l101.4 122.9c11.2 13.6 9.3 33.8-4.3 45-5.9 4.9-13.1 7.3-20.3 7.3z"
+                                      fill="#3688FF" p-id="1451"></path>
+                                <path d="M504 451.9c-7.2 0-14.4-2.4-20.3-7.3-13.6-11.2-15.6-31.4-4.3-45l101.4-122.9c11.2-13.6 31.4-15.6 45-4.3 13.6 11.2 15.6 31.4 4.3 45L528.7 440.3c-6.3 7.6-15.5 11.6-24.7 11.6z"
+                                      fill="#3688FF" p-id="1452"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="icon-word">transaction</div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        {% endif %}
+
+        {# hottest #}
+        <div class="col-sm-12 inner3">
+            <h4>Hottest Posts</h4>
+            {% if posts5 %}
+            <ul class="posts list-unstyled">
+                {% for post in posts5 %}
+                <li class="hot-post"><a href="{{ url_for('.post', id=post.id) }}">
+                    <span class="glyphicon glyphicon-fire"></span>
+                    <span>{{ post.title }}</span>
+                </a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+        {# hotShow #}
+        <div class="col-sm-12 inner3">
+            <h4>Hottest Auto Show</h4>
+            {% if hot_activity %}
+            <ul class="posts list-unstyled">
+                {% for activity in hot_activity %}
+                <li class="hot-post">
+                    <span class="glyphicon glyphicon-fire"></span>
+                    <span>{{ activity.activity_name }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+<div class="page" id="page" style="display: flex; flex-direction: row">
+    <div class="side_left" style="padding-left: 20px; display: flex; flex-direction: column">
+
+        <!--        <div class="col-md-offset-2">-->
+        <div style="width: 350px">
+
+        </div>
+
+    </div>
+    <div class="container">
+        <!--    flash消息显示区-->
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+
+
+        {# 轮播图#}
+        <div class="my-carousel">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" style="border-radius: 5px" role="listbox">
+                    <div class="item active">
+                        <img src="../static/Image/轮播图1.jpeg" alt="...">
+                        <div class="hot-activity1">
+                            {% if hot_activity[0] %}
+                            <h3>{{ hot_activity[0].activity_name }}</h3>
+                            <p style="margin-bottom: 0">{{ hot_activity[0].activity_place }}</p><br>
+                            <p style="margin-bottom: 0">{{ hot_activity[0].activity_time }}</p>
+                            {% if not current_user.is_wanting(hot_activity[0]) %}
+                            <a class="icon-btn"
+                               href="{{ url_for('company.want', activity_id=hot_activity[0].id) }}#{{ hot_activity[0].id }}">
+                                <span class="glyphicon glyphicon-heart-empty"></span>
+                                <span>{{ hot_activity[0].wanter.count() }} WantToGo</span>
+                            </a>
+                            {% else %}
+                            <a class="icon-btn"
+                               href="{{ url_for('company.not_want', activity_id=hot_activity[0].id) }}#{{ hot_activity[0].id }}">
+                                <span class="glyphicon glyphicon-heart"></span>
+                                <span>{{ hot_activity[0].wanter.count() }} WantToGo</span>
+                            </a>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="../static/Image/轮播图3.jpeg" alt="...">
+                        <div class="hot-activity2">
+                            {% if hot_activity[1] %}
+                            <h3>{{ hot_activity[1].activity_name }}</h3>
+                            <p style="margin-bottom: 0">{{ hot_activity[1].activity_place }}</p><br>
+                            <p style="margin-bottom: 0">{{ hot_activity[1].activity_time }}</p>
+                            {% if not current_user.is_wanting(hot_activity[1]) %}
+                            <a class="icon-btn"
+                               href="{{ url_for('company.want', activity_id=hot_activity[1].id) }}#{{ hot_activity[1].id }}">
+                                <span class="glyphicon glyphicon-heart-empty"></span>
+                                <span>{{ hot_activity[1].wanter.count() }} WantToGo</span>
+                            </a>
+                            {% else %}
+                            <a class="icon-btn"
+                               href="{{ url_for('company.not_want', activity_id=hot_activity[1].id) }}#{{ hot_activity[1].id }}">
+                                <span class="glyphicon glyphicon-heart"></span>
+                                <span>{{ hot_activity[1].wanter.count() }} WantToGo</span>
+                            </a>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="../static/Image/轮播图2.jpeg" alt="...">
+                        <div class="hot-activity3">
+                            {% if hot_activity[2] %}
+                            <h3>{{ hot_activity[2].activity_name }}</h3>
+                            <p style="margin-bottom: 0">{{ hot_activity[2].activity_place }}</p><br>
+                            <p style="margin-bottom: 0">{{ hot_activity[2].activity_time }}</p>
+                            {% if not current_user.is_wanting(hot_activity[2]) %}
+                            <a class="icon-btn"
+                               href="{{ url_for('company.want', activity_id=hot_activity[2].id) }}#{{ hot_activity[2].id }}">
+                                <span class="glyphicon glyphicon-heart-empty"></span>
+                                <span>{{ hot_activity[2].wanter.count() }} WantToGo</span>
+                            </a>
+                            {% else %}
+                            <a class="icon-btn"
+                               href="{{ url_for('company.not_want', activity_id=hot_activity[2].id) }}#{{ hot_activity[2].id }}">
+                                <span class="glyphicon glyphicon-heart"></span>
+                                <span>{{ hot_activity[2].wanter.count() }} WantToGo</span>
+                            </a>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="../static/Image/轮播图4.jpeg" alt="...">
+                        <div class="hot-activity4">
+                            {% if hot_activity[3] %}
+                            <h3>{{ hot_activity[3].activity_name }}</h3>
+                            <p style="margin-bottom: 0">{{ hot_activity[3].activity_place }}</p><br>
+                            <p style="margin-bottom: 0">{{ hot_activity[3].activity_time }}</p>
+                            {% if not current_user.is_wanting(hot_activity[3]) %}
+                            <a class="icon-btn"
+                               href="{{ url_for('company.want', activity_id=hot_activity[3].id) }}#{{ hot_activity[3].id }}">
+                                <span class="glyphicon glyphicon-heart-empty"></span>
+                                <span>{{ hot_activity[3].wanter.count() }} WantToGo</span>
+                            </a>
+                            {% else %}
+                            <a class="icon-btn"
+                               href="{{ url_for('company.not_want', activity_id=hot_activity[3].id) }}#{{ hot_activity[3].id }}">
+                                <span class="glyphicon glyphicon-heart"></span>
+                                <span>{{ hot_activity[3].wanter.count() }} WantToGo</span>
+                            </a>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="../static/Image/轮播图5.jpeg" alt="...">
+                        <div class="hot-activity5">
+                            {% if hot_activity[4] %}
+                            <h3>{{ hot_activity[4].activity_name }}</h3>
+                            <p style="margin-bottom: 0">{{ hot_activity[4].activity_place }}</p><br>
+                            <p style="margin-bottom: 0">{{ hot_activity[4].activity_time }}</p>
+
+                            {% if not current_user.is_wanting(hot_activity[4]) %}
+                            <a class="icon-btn"
+                               href="{{ url_for('company.want', activity_id=hot_activity[4].id) }}#{{ hot_activity[4].id }}">
+                                <span class="glyphicon glyphicon-heart-empty"></span>
+                                <span>{{ hot_activity[4].wanter.count() }} WantToGo</span>
+                            </a>
+                            {% else %}
+                            <a class="icon-btn"
+                               href="{{ url_for('company.not_want', activity_id=hot_activity[4].id) }}#{{ hot_activity[4].id }}">
+                                <span class="glyphicon glyphicon-heart"></span>
+                                <span>{{ hot_activity[4].wanter.count() }} WantToGo</span>
+                            </a>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" style="border-radius: 5px" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" style="border-radius: 5px" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="col-md-12 content" style="background-color: lightsalmon">
+            <div class="tabbable">
+                <ul class="nav post-nav" style="display: flex; flex-direction: row; justify-content: space-between">
+                    <li id="btn-1">
+                        {% if flag == 1 %}
+                        <a style="font-size: 20px; color: #c05712; font-weight: bold"><img width="22px" height="22px" src="../static/Image/icon/Discovery.png"/>  Discovery</a>
+                        {% else %}
+                        <a href="{{ url_for('.index') }}">Discovery</a>
+                        {% endif %}
+                    </li>
+                    <li id="btn-2">
+                        {% if flag == 2 %}
+                        <a style="font-size: 20px; color: #c05712; font-weight: bold"><img width="22px" height="22px" src="../static/Image/icon/Market.png"/>  Market</a>
+                        {% else %}
+                        <a href="{{ url_for('.index_transaction') }}">Market</a>
+                        {% endif %}
+                    </li>
+                    <li id="btn-3">
+                        {% if flag == 3 %}
+                        <a style="font-size: 20px; color: #c05712; font-weight: bold"><img width="22px" height="22px" src="../static/Image/icon/AutoShow.png"/>  Auto Show</a>
+                        {% else %}
+                        <a href="{{ url_for('.index_activity') }}">Auto Show</a>
+                        {% endif %}
+                    </li>
+
+                    {% if current_user.is_authenticated %}
+                    <li id="btn-4">
+                        {% if flag == 4 %}
+                       <a style="font-size: 20px; color: #c05712; font-weight: bold"><img width="22px" height="22px" src="../static/Image/icon/MyRing.png"/>  My Ring</a>
+                        {% else %}
+                        <a href="{{ url_for('.index_follow') }}">My Ring</a>
+                        {% endif %}
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
+        {% block page %}
+        {% endblock %}
+
+    </div>
+    <div class="side_right" style="padding-right: 20px; display: flex; flex-direction: column">
+
+        <!--        <div class="col-md-offset-2">-->
+        <div style="width: 350px">
+
+        </div>
+
+    </div>
+    <span id="toTop" class="toTop"></span>
+
+</div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+<script>
+    if (sessionStorage.getItem("state_now_left") === "open" || sessionStorage.getItem("state_now_left") === null) {
+        $("#list").animate({
+            opacity: '1',
+            // height: '0px',
+            width: '350px'
+        });
+    } else {
+        $("#list").animate({
+            opacity: '0',
+            // height: '0px',
+            width: '0px'
+        });
+    }
+
+    if (sessionStorage.getItem("state_now_right") === "open" || sessionStorage.getItem("state_now_right") === null) {
+        $("#list2").animate({
+            opacity: '1',
+            // height: '0px',
+            width: '350px'
+        });
+    } else {
+        $("#list2").animate({
+            opacity: '0',
+            // height: '0px',
+            width: '0px'
+        });
+    }
+
+    $(function () {
+        $("#open").click(function () {
+            // $("#list").toggle();
+            if (sessionStorage.getItem("state_now_left") === "open" || sessionStorage.getItem("state_now_left") === null) {
+                sessionStorage.setItem("state_now_left", "close");
+                $("#list").animate({
+                    opacity: '0',
+                    // height: '0px',
+                    width: '0px'
+                });
+            } else {
+                sessionStorage.setItem("state_now_left", "open");
+                $("#list").animate({
+                    opacity: '1',
+                    // height: '0px',
+                    width: '350px'
+                });
+            }
+            console.log(sessionStorage.getItem("state_now_left"))
+        })
+    })
+
+    $(function () {
+        $("#open2").click(function () {
+            // $("#list2").toggle();
+            if (sessionStorage.getItem("state_now_right") === "open" || sessionStorage.getItem("state_now_right") === null) {
+                sessionStorage.setItem("state_now_right", "close");
+                $("#list2").animate({
+                    opacity: '0',
+                    // height: '0px',
+                    width: '0px'
+                });
+            } else {
+                sessionStorage.setItem("state_now_right", "open");
+                $("#list2").animate({
+                    opacity: '1',
+                    // height: '0px',
+                    width: '350px'
+                });
+            }
+            console.log(sessionStorage.getItem("state_now_right"))
+        })
+    })
+
+    // window.onload = function () {
+    //     $("#wangyiyun").attr("src", "//music.163.com/outchain/player?type=2&id=1404596131&auto=1&height=66");
+    // };
+
+</script>
+
+<script>
+    (function() {
+    var root = (typeof self == 'object' && self.self == self && self) ||
+        (typeof global == 'object' && global.global == global && global) ||
+        this || {};
+
+    // requestAnimationFrame 兼容到 IE6
+    var lastTime = 0;
+    var vendors = ['webkit', 'moz'];
+    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || // Webkit中此取消方法的名字变了
+            window[vendors[x] + 'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
+            var id = window.setTimeout(function() {
+                callback(currTime + timeToCall);
+            }, timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+    }
+    if (!window.cancelAnimationFrame) {
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+    }
+
+    // bind 函数在 IE7-8 不能使用
+    Function.prototype.bind = Function.prototype.bind || function (context) {
+        if (typeof this !== "function") {
+          throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
+        }
+
+        var self = this;
+        var args = Array.prototype.slice.call(arguments, 1);
+
+        var fNOP = function () {};
+
+        var fBound = function () {
+            var bindArgs = Array.prototype.slice.call(arguments);
+            self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
+        }
+
+        fNOP.prototype = this.prototype;
+        fBound.prototype = new fNOP();
+        return fBound;
+    }
+
+
+    var util = {
+        extend: function(target) {
+            for (var i = 1, len = arguments.length; i < len; i++) {
+                for (var prop in arguments[i]) {
+                    if (arguments[i].hasOwnProperty(prop)) {
+                        target[prop] = arguments[i][prop]
+                    }
+                }
+            }
+
+            return target
+        },
+        getStyle: function(element, prop) {
+            return element.currentStyle ? element.currentStyle[prop] : document.defaultView.getComputedStyle(element)[prop]
+        },
+        getScrollOffsets: function() {
+            var w = window;
+            if (w.pageXOffset != null) return { x: w.pageXOffset, y: w.pageYOffset };
+            var d = w.document;
+            if (document.compatMode == "CSS1Compat") {
+                return {
+                    x: d.documentElement.scrollLeft,
+                    y: d.documentElement.scrollTop
+                }
+            }
+            return { x: d.body.scrollLeft, y: d.body.scrollTop }
+        },
+        setOpacity: function(ele, opacity) {
+            if (ele.style.opacity != undefined) {
+                ele.style.opacity = opacity / 100;
+            } else {
+                // 兼容低版本 IE 浏览器
+                ele.style.filter = "alpha(opacity=" + opacity + ")";
+            }
+        },
+        fadeIn: function(element, speed) {
+            var opacity = 0;
+            util.setOpacity(element, 0)
+            var timer;
+
+            function step() {
+                util.setOpacity(element, opacity += speed)
+                if (opacity < 100) {
+                    timer = requestAnimationFrame(step);
+                } else {
+                    cancelAnimationFrame(timer)
+                }
+            }
+            requestAnimationFrame(step)
+        },
+        fadeOut: function(element, speed) {
+            var opacity = 100;
+            util.setOpacity(element, 100)
+            var timer;
+
+            function step() {
+                util.setOpacity(element, opacity -= speed)
+                if (opacity > 0) {
+                    timer = requestAnimationFrame(step);
+                } else {
+                    cancelAnimationFrame(timer)
+                }
+            }
+            requestAnimationFrame(step)
+        },
+        addEvent: function(element, type, fn) {
+            if (document.addEventListener) {
+                element.addEventListener(type, fn, false);
+                return fn;
+            } else if (document.attachEvent) {
+                var bound = function() {
+                    return fn.apply(element, arguments)
+                }
+                element.attachEvent('on' + type, bound);
+                return bound;
+            }
+        },
+        indexOf: function(array, item) {
+            var result = -1;
+            for (var i = 0, len = array.length; i < len; i++) {
+                if (array[i] === item) {
+                    result = i;
+                    break;
+                }
+            }
+            return result;
+        },
+        addClass: function(element, className) {
+            var classNames = element.className.split(/\s+/);
+            if (util.indexOf(classNames, className) == -1) {
+                classNames.push(className);
+            }
+            element.className = classNames.join(' ')
+        },
+        removeClass: function(element, className) {
+            var classNames = element.className.split(/\s+/);
+            var index = util.indexOf(classNames, className)
+            if (index !== -1) {
+                classNames.splice(index, 1);
+            }
+            element.className = classNames.join(' ')
+        },
+        supportTouch: function() {
+            return 'ontouchstart' in window ||
+                window.DocumentTouch && document instanceof window.DocumentTouch;
+
+        },
+        getTime: function() {
+            return new Date().getTime();
+        }
+    }
+
+    function ScrollToTop(element, options) {
+        this.element = typeof element === 'string' ? document.querySelector(element) : element;
+
+        this.options = util.extend({}, this.constructor.defaultOptions, options)
+
+        this.init();
+    }
+
+    ScrollToTop.VERSION = '1.0.0';
+
+    ScrollToTop.defaultOptions = {
+        // 默认值为 100，表示滚动条向下滑动 100px 时，出现回到顶部按钮
+        showWhen: 100,
+        // 回到顶部的速度。默认值为 100，数值越大，速度越快。 100 表示浏览器每次重绘，scrollTop 就减去 100px。
+        speed: 100,
+        // 元素淡入和淡出的速度。默认值为 10，数值越大，速度越快。 10 表示浏览器每次重绘，元素透明度以 10% 递增或者递减。
+        fadeSpeed: 10
+    }
+
+    var proto = ScrollToTop.prototype;
+
+    proto.init = function() {
+        this.hideElement();
+        this.bindScrollEvent();
+        this.bindToTopEvent();
+    }
+
+    proto.hideElement = function() {
+        util.setOpacity(this.element, 0);
+        this.status = "hide";
+    }
+
+    proto.bindScrollEvent = function() {
+        var self = this;
+        util.addEvent(window, "scroll", function() {
+            if (util.getScrollOffsets().y > self.options.showWhen) {
+                if (self.status == 'hide') {
+                    util.fadeIn(self.element, self.options.fadeSpeed)
+                    self.status = 'show';
+                }
+            } else {
+                if (self.status == 'show') {
+                    util.fadeOut(self.element, self.options.fadeSpeed);
+                    self.status = 'hide';
+                    util.removeClass(self.element, 'backing')
+                }
+            }
+        })
+
+    }
+
+    proto.handleBack = function() {
+        var timer, self = this;
+        util.addClass(self.element, 'backing');
+        cancelAnimationFrame(timer);
+        timer = requestAnimationFrame(function fn() {
+            var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+            if (oTop > 0) {
+                document.body.scrollTop = document.documentElement.scrollTop = oTop - self.options.speed;
+                timer = requestAnimationFrame(fn);
+            } else {
+                cancelAnimationFrame(timer);
+            }
+        })
+    }
+
+    proto.bindToTopEvent = function() {
+        var self = this;
+
+        util.addEvent(self.element, "click", self.handleBack.bind(self))
+
+        if (util.supportTouch()) {
+            util.addEvent(self.element, "touchstart", function(e) {
+                self._startX = e.touches[0].pageX;
+                self._startY = e.touches[0].pageY;
+                self._startTime = util.getTime();
+            })
+
+            util.addEvent(self.element, "touchmove", function(e) {
+                self._moveX = e.touches[0].pageX;
+                self._moveY = e.touches[0].pageY;
+            })
+
+            util.addEvent(self.element, "touchend", function(e) {
+
+                var endTime = util.getTime();
+                if (self._moveX !== null && Math.abs(self._moveX - self.startX) > 10 ||
+                    self._moveY !== null && Math.abs(self._moveY - self.startY) > 10) {
+
+                } else {
+                    // 手指移动的距离小于 10 像素并且手指和屏幕的接触时间要小于 500 毫秒
+                    if (endTime - self._startTime < 500) {
+                        self.handleBack()
+                    }
+                }
+            })
+
+        }
+
+    }
+
+    if (typeof exports != 'undefined' && !exports.nodeType) {
+        if (typeof module != 'undefined' && !module.nodeType && module.exports) {
+            exports = module.exports = ScrollToTop;
+        }
+        exports.ScrollToTop = ScrollToTop;
+    } else {
+        root.ScrollToTop = ScrollToTop;
+    }
+}());
+    var topElement = document.getElementById("toTop");
+    var toTop = new ScrollToTop(topElement, {
+        showWhen: 200,
+        speed: 200
+    })
+</script>
+<script type="text/javascript">
+    function select(x) {
+        if ({{ flag }} == "1"){
+            window.location.href = "/?type=" + x
+        }
+        if ({{ flag }} == "2"){
+            window.location.href = "/trans/?type=" + x
+        }
+        if ({{ flag }} == "3"){
+            window.location.href = "/act/?type=" + x
+        }
+        if ({{ flag }} == "4"){
+            window.location.href = "/foll/?type=" + x
+        }
+    }
+</script>
+
+{% endblock %}

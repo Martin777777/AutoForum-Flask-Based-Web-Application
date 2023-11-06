@@ -1,0 +1,42 @@
+<ul class="posts list-unstyled">
+    {% for activity in activities %}
+    <li class="avtivity" id="{{  activity.id }}">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">
+                    <h3 class="item-name" style="display: inline">
+                        {{ activity.activity_name }}
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <p><strong>Details:</strong>{{ activity.activity_describe }}</p>
+                </div>
+                <!-- List group -->
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Time</strong> {{ activity.activity_time }}</li>
+                    <li class="list-group-item"><strong>Place</strong> {{ activity.activity_place }}</li>
+                    <li class="list-group-item"><strong>Organizer:</strong> {{ activity.Organizer }}</li>
+                    {% if activity.photo %}
+                    <li class="list-group-item"><strong>Auto Show</strong>
+                        <img src="data:image/png;base64,{{ activity.photo }}" height="180px" width="350px"/>
+                    </li>
+                    {% endif %}
+                </ul>
+
+                <div class="panel-footer">
+                    <span class="post-date">{{ moment(activity.timestamp).fromNow() }}</span>
+
+                    {# 删除#}
+                    {% if current_user == activity.announcer %}
+                    <a class="icon-btn" href="{{ url_for('company.delete_activity', activity_id=activity.id)}}">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <span>delete</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>

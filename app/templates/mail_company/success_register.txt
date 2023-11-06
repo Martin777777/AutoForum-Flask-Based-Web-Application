@@ -1,0 +1,11 @@
+Dear {{ user.username }},
+Welcome to Student Exchange Forum of BJUT!
+Congratulations on your successful registration of SOFB official company account
+<p>The following is your login information
+
+Company Name: {{ firm.name }}
+Manager Username: {{ user.username }}
+Thank you for your cooperation.
+
+Sincerely,
+Student Exchange Forum of BJUT

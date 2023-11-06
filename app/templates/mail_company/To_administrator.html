@@ -1,0 +1,12 @@
+<p>Dear administrator,</p>
+<p>There is a student company or club applying for an SOFB official account.</p>
+<p>The following is their information. You need to contact the school to confirm the authenticity of this information.</p>
+
+<h5><strong>Firm Name: </strong> {{ company.name }}</h5>
+<h5><strong>Firm Manager: </strong> {{ company.teacher }}</h5>
+<h5><strong>Firm Email: </strong> {{ company.email }}</h5>
+<h5><strong>Contact Way : </strong> {{ company.phone }}</h5>
+<p>After checking the information, <a href="{{ url_for('company.send_result', oid=company.id, token=token, _external=True) }}">click here</a></p>
+
+<p>Sincerely,</p>
+<p>Student Exchange Forum of BJUT</p>
